@@ -1,0 +1,22 @@
+CREATE TABLE costumes (
+idcostume NUMBER(10) NOT NULL,
+name VARCHAR2(255) NULL,
+brand VARCHAR2(45) NULL,
+year NUMBER(10) NULL,
+description VARCHAR2(255) NULL,
+idCategory NUMBER(10) NULL,
+PRIMARY KEY (idCostume);
+
+CREATE SEQUENCE costumes_seq START WITH 1 INCREMENT BY;
+
+CREATE OR REPLACE TRIGGER costumes_seq_tr
+BEFORE INSERT ON costumes FOR EACH ROW
+WHEN (NEW.idCostume IS NULL)
+BEGIN 
+SELECT costumes_seq.NEXTVAL INTO :NEW.idCostume FROM DUAL;
+END;
+
+
+*******************
+costume
+/costume/
